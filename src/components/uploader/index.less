@@ -1,0 +1,110 @@
+@import '../style/var';
+
+.uploader {
+  position: relative;
+  display: inline-block;
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    &--disabled {
+      opacity: @uploader-disabled-opacity;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; // to clip file-upload-button
+    cursor: pointer;
+    opacity: 0;
+
+    &-wrapper {
+      position: relative;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__upload {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: @uploader-size;
+    height: @uploader-size;
+    margin: 0 @padding-xs @padding-xs 0;
+    background-color: @uploader-upload-background-color;
+
+    &:active {
+      background-color: @uploader-upload-active-color;
+    }
+
+    &-icon {
+      color: @uploader-icon-color;
+      font-size: @uploader-icon-size;
+    }
+
+    &-text {
+      margin-top: @padding-xs;
+      color: @uploader-text-color;
+      font-size: @uploader-text-font-size;
+    }
+  }
+
+  &__preview {
+    position: relative;
+    margin: 0 @padding-xs @padding-xs 0;
+    cursor: pointer;
+
+    &-image {
+      display: block;
+      width: @uploader-size;
+      height: @uploader-size;
+      overflow: hidden;
+      // border-radius: 8px;
+    }
+    &-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &-delete {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: @uploader-delete-icon-size;
+      height: @uploader-delete-icon-size;
+      background-color: @uploader-delete-background-color;
+      border-radius: 0 0 0 12px;
+
+      &-icon {
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        color: #fff;
+        color: @uploader-delete-color;
+        font-size: 16px;
+        transform: scale(0.5);
+      }
+    }
+
+    &-cover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}

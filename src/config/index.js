@@ -16,7 +16,10 @@ export default {
     {
       title: '表单组件',
       items: [
-        
+        {
+          path: 'uploader',
+          title: 'Uploader',
+        }
       ],
     },
     {

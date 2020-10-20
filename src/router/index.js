@@ -16,6 +16,14 @@ const routes = [
     meta: {
       name: 'image'
     }
+  },
+  {
+    path: '/uploader',
+    name: 'uploader',
+    component: () => import('../components/uploader/demo'),
+    meta: {
+      name: 'uploader'
+    }
   }
 ]
 
