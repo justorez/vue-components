@@ -5,7 +5,7 @@
     @click="onClick($event)"
   >
     <img 
-      class="m-image__img"
+      :class="bem('img')"
       v-if="!error"
       :src="src" 
       :alt="alt"
@@ -15,22 +15,24 @@
     />
 
     <div 
-      class="m-image__loading"
+      :class="bem('loading')"
       v-if="loading && showLoading"
     >
-      <van-icon class="m-image__loading-icon" :name="loadingIcon"/>
+      <van-icon :class="bem('loading-icon')" :name="loadingIcon"/>
     </div>
 
     <div 
-      class="m-image__error"
+      :class="bem('error')"
       v-if="error && showError"
     >
-      <van-icon class="m-image__error-icon" :name="errorIcon"/>
+      <van-icon :class="bem('error-icon')" :name="errorIcon"/>
     </div>
   </div>
 </template>
 
 <script>
+import { createBEM } from '../utils/bem';
+
 export default {
   name: 'm-image',
   inheritAttrs: false,
@@ -57,6 +59,7 @@ export default {
   },
   data() {
     return {
+      bem: createBEM('m-image'),
       loading: true,
       error: false
     }

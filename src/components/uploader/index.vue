@@ -1,30 +1,30 @@
 <template>
   <div class="uploader">
-    <div class="uploader__wrapper">
+    <div :class="bem('wrapper')">
 
       <div 
-        class="uploader__preview"
+        :class="bem('preview')"
         v-for="(item, i) in fileList"
         :key="i"
       >
-        <div class="uploader__preview-image" @click="onPreview(item)">
+        <div :class="bem('preview-image')" @click="onPreview(item)">
           <img :src="item.content || item.url" alt=""/>
         </div>
-        <div v-if="deletable" class="uploader__preview-delete">
+        <div v-if="deletable" :class="bem('preview-delete')">
           <van-icon 
-            class="uploader__preview-delete-icon"
+            :class="bem('preview-delete-icon')"
             name="cross"
             @click="onDelete(item, i)"
           />
         </div>
       </div>
 
-      <div class="uploader__upload">
-        <van-icon class="uploader__upload-icon" name="plus"/>
+      <div :class="bem('upload')">
+        <van-icon :class="bem('upload-icon')" name="plus"/>
         <input 
           id="uploader" 
           type="file" 
-          class="uploader__input"
+          :class="bem('input')"
           :accept="accept"
           @change="onChange"
           ref="input"
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { createBEM } from '../utils/bem';
 import {
   isPromise,
   toArray, 
@@ -73,6 +74,11 @@ export default {
     deletable: {
       type: Boolean,
       default: true
+    }
+  },
+  data() {
+    return {
+      bem: createBEM('uploader')
     }
   },
   methods: {
